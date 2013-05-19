@@ -72,7 +72,7 @@ function Body(position, velocity, mass, radius, color){
         for(var i=0;i<bodies.length;i++){
             var other = bodies[i];
 
-            if(!this.equals(other)){
+            if(!this.equals(other) && this.color != "yellow"){
                 var other_mass = other.mass;
                 var other_dist = (this.position.minus(other.position)).magnitude();
 
