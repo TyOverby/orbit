@@ -383,19 +383,21 @@ function BasicGame(){
 
     var bodies = [];
 
-    this.preload = function(pane){
+    this.preload = function(pane, callback){
         screenDims = new Vector2f(window.innerWidth-5,window.innerHeight-5);
         pane.setSize(screenDims.x,screenDims.y);
 
         backgroundWhite = new Image();
         backgroundWhite.src = 'http://tyoverby.com/orbit/img/backgroundWhite.png';
-        backgroundBlack = new Image();
-        backgroundBlack.src = 'http://tyoverby.com/orbit/img/backgroundBlack.png';
+        backgroundWhite.onload = function() {
+            backgroundBlack = new Image();
+            backgroundBlack.src = 'http://tyoverby.com/orbit/img/backgroundBlack.png';
+            backgroundBlack.onload = callback;
+        };
     }
 
 	this.startup = function(){
         console.log("starting up");
-        this.preload(document.getElementById("canvas").getContext("2d"));
 
         var startPos = screenDims.times(0.5).clone();
 
@@ -441,9 +443,14 @@ function BasicGame(){
 }
 
 
-function initializeEngine(){
-    game = new Engine(new BasicGame(),"canvas");
-    console.log("initialized!");
+function initializeEngine(callback){
+    var cv = document.getElementById("canvas").getContext("2d");
+    g = new BasicGame();
+    g.preload(cv, function (){
+        game = new Engine(new BasicGame(),"canvas");
+        console.log("initialized!");
+        callback();
+    });
 }
 
 
@@ -606,8 +613,9 @@ function Body(position, velocity, mass, radius, color){
     </body>
     <script>
         setTimeout(function(){
-            initializeEngine();
-            game.run();
+            initializeEngine(function(){
+                game.run();
+            });
         }, 500);
     </script>
 </html>
