@@ -13,7 +13,11 @@
         <script src="../js/game/Body.js"></script>
 	</head>
 
-	<body style="background-color:black; padding:0px; margin:0px" onload="initializeEngine()">
-		<canvas id="canvas" onmouseover="game.run()"></canvas>
+	<body style="background-color:black; padding:0px; margin:0px">
+		<canvas id="canvas"></canvas>
     </body>
+    <script>
+        initializeEngine();
+        game.run();
+    </script>
 </html>

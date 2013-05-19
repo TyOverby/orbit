@@ -3,7 +3,6 @@ somevar = true;
 function BasicGame(){
     var screenDims;
 
-    var typeImage;
     var backgroundWhite;
     var backgroundBlack;
 
@@ -13,8 +12,6 @@ function BasicGame(){
         screenDims = new Vector2f(window.innerWidth-5,window.innerHeight-5);
         pane.setSize(screenDims.x,screenDims.y);
 
-        typeImage = new Image();
-        typeImage.src='../img/type.png';
         backgroundWhite = new Image();
         backgroundWhite.src = '../img/backgroundWhite.png'
         backgroundBlack = new Image();
@@ -23,6 +20,7 @@ function BasicGame(){
 
 	this.startup = function(){
         console.log("starting up");
+        this.preload(document.getElementById("canvas").getContext("2d"));
 
         var startPos = screenDims.times(0.5).clone();
 
@@ -50,7 +48,6 @@ function BasicGame(){
 	this.render = function(pane){
         pane.fillStyle="#111";
         pane.cover();
-        pane.drawImage(typeImage,screenDims.x/2-typeImage.width/2,-50);
 
         for(var i=0;i<bodies.length;i++){
             bodies[i].render(pane);
