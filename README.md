@@ -1,10 +1,6 @@
-JS Game Engine
+Orbit
 ==============
 
-* Basic Drawing
-* Game Loop
-* Smart Drawing
-    * FPS limiting
-* Networking
-    * Web Sockets!
-    * Server in nodejs!
+This is a *very* old tech demo that I made before I knew how JS worked
+I recently cleaned it up to be presentable, but it is by no means an indicator
+of current code quality.
