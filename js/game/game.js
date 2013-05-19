@@ -13,9 +13,9 @@ function BasicGame(){
         pane.setSize(screenDims.x,screenDims.y);
 
         backgroundWhite = new Image();
-        backgroundWhite.src = '../img/backgroundWhite.png'
+        backgroundWhite.src = './img/backgroundWhite.png'
         backgroundBlack = new Image();
-        backgroundBlack.src = '../img/backgroundBlack.png'
+        backgroundBlack.src = './img/backgroundBlack.png'
     }
 
 	this.startup = function(){
